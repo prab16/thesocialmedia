@@ -1,0 +1,4 @@
+Please make note of these MySQL credentials again:
+  Root User: adminJgmGuTw
+  Root Password: Ib9SHL-VZDiX
+URL: https://thesocialmedia-prab12.rhcloud.com/phpmyadmin/

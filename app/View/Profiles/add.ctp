@@ -33,7 +33,7 @@
 
 		<div class="profiles form">
 		
-			<?php echo $this->Form->create('Profile', array('role' => 'form')); ?>
+			<?php echo $this->Form->create('Profile', array('type'=> 'file','role' => 'form')); ?>
 
 				<fieldset>
 
@@ -46,6 +46,9 @@
 					<div class="form-group">
 						<?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
+                                        <div class="form-group">
+						<?php echo $this->Form->input('avatar', array('type'=>'file')); ?>
+					</div><!-- .form-group -->                                    
 					<div class="form-group">
 						<?php echo $this->Form->input('category_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->

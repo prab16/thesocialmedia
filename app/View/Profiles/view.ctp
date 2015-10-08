@@ -37,6 +37,7 @@
         <div class="profiles view">
 
             <h2><?php  echo __('Profile'); ?></h2>
+            <?php if ($profile['Profile']['avatar']) echo $this->Html->image($profile['Profile']['avatar'], array('escape' => false , 'width' => '100' , 'height' => '100'));?>
 
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">

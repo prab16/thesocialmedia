@@ -48,6 +48,31 @@ class Profile extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'avatar' => array(
+            // http://book.cakephp.org/2.0/en/models/data-validation.html#Validation::uploadError
+            'uploadError' => array(
+                'rule' => 'uploadError',
+                'message' => 'Something went wrong with the file upload error',
+                'allowEmpty' => TRUE,
+            ),
+            // http://book.cakephp.org/2.0/en/models/data-validation.html#Validation::mimeType
+            'mimeType' => array(
+                'rule' => array('mimeType', array('image/gif', 'image/png', 'image/jpg', 'image/jpeg')),
+                'message' => 'Invalid file, only images allowed',
+                'allowEmpty' => TRUE,
+            ),
+            'filesize' => array(
+                'rule' => array('filesize', '<=', '1MB'),
+                'message' => 'Article image must be less then 1MB',
+                'allowEmpty' => TRUE,
+            ),
+            // custom callback to deal with the file upload
+            'processImageUpload' => array(
+                'rule' => 'processImageUpload',
+                'message' => 'Something went wrong processing your file',
+                'allowEmpty' => TRUE,
+            )
+        ),
         'category_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
@@ -138,6 +163,34 @@ class Profile extends AppModel {
 
     public function isOwnedBy($post, $user) {
         return $this->field('id', array('id' => $post, 'user_id' => $user)) !== false;
+    }
+
+    public function processImageUpload($check = array()) {
+//    debug($check); die();
+        // deal with uploaded file
+        if (!empty($check['avatar']['tmp_name'])) {
+
+            // check file is uploaded
+            if (!is_uploaded_file($check['avatar']['tmp_name'])) {
+                return FALSE;
+            }
+
+            // build full filename
+            $filename = WWW_ROOT . 'img' . DS . 'uploads' . DS . $check['avatar']['name'];
+
+            // @todo check for duplicate filename
+            // try moving file
+            if (!move_uploaded_file($check['avatar']['tmp_name'], $filename)) {
+                return FALSE;
+
+                // file successfully uploaded
+            } else {
+                // save the file path relative from WWW_ROOT e.g. uploads/example_filename.jpg
+                $this->data[$this->alias]['avatar'] = 'uploads' . '/' . $check['avatar']['name'];
+            }
+        }
+
+        return TRUE;
     }
 
 }

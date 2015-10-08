@@ -51,6 +51,10 @@ class ProfilesController extends AppController {
         if ($this->request->is('post')) {
             $this->Profile->create();
             $this->request->data['Profile']['user_id'] = $this->Auth->user('id');
+            $data = $this->request->data['Profile'];
+            if (!$data['avatar']['name']){
+                unset($data['avatar']);
+            }
             if ($this->Profile->save($this->request->data)) {
                 $this->Session->setFlash(__('The profile has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'index'));
@@ -78,6 +82,10 @@ class ProfilesController extends AppController {
             throw new NotFoundException(__('Invalid profile'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
+            $data = $this->request->data['Profile'];
+            if (!$data['avatar']['name']){
+                unset($data['avatar']);
+            }
             if ($this->Profile->save($this->request->data)) {
                 $this->Session->setFlash(__('The profile has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'index'));
