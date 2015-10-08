@@ -1,0 +1,807 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/AppController.php:71
+msgid "This action is not authorized"
+msgstr ""
+
+#: Controller/CategoriesController.php:39;72;101
+msgid "Invalid category"
+msgstr ""
+
+#: Controller/CategoriesController.php:54;76
+msgid "The category has been saved"
+msgstr ""
+
+#: Controller/CategoriesController.php:57;79
+msgid "The category could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/CategoriesController.php:104
+msgid "Category deleted"
+msgstr ""
+
+#: Controller/CategoriesController.php:107
+msgid "Category was not deleted"
+msgstr ""
+
+#: Controller/CommentsController.php:39;75;107
+msgid "Invalid comment"
+msgstr ""
+
+#: Controller/CommentsController.php:54;79
+msgid "The comment has been saved"
+msgstr ""
+
+#: Controller/CommentsController.php:57;82
+msgid "The comment could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/CommentsController.php:110
+msgid "Comment deleted"
+msgstr ""
+
+#: Controller/CommentsController.php:113
+msgid "Comment was not deleted"
+msgstr ""
+
+#: Controller/NetworksController.php:39;72;101
+msgid "Invalid network"
+msgstr ""
+
+#: Controller/NetworksController.php:54;76
+msgid "The network has been saved"
+msgstr ""
+
+#: Controller/NetworksController.php:57;79
+msgid "The network could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/NetworksController.php:104
+msgid "Network deleted"
+msgstr ""
+
+#: Controller/NetworksController.php:107
+msgid "Network was not deleted"
+msgstr ""
+
+#: Controller/ProfilesController.php:39;75;107
+msgid "Invalid profile"
+msgstr ""
+
+#: Controller/ProfilesController.php:54;79
+msgid "The profile has been saved"
+msgstr ""
+
+#: Controller/ProfilesController.php:57;82
+msgid "The profile could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProfilesController.php:110
+msgid "Profile deleted"
+msgstr ""
+
+#: Controller/ProfilesController.php:113
+msgid "Profile was not deleted"
+msgstr ""
+
+#: Controller/UsersController.php:25
+msgid "Nom d'user ou mot de passe invalide, réessayer"
+msgstr ""
+
+#: Controller/UsersController.php:60;93;122
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsersController.php:75;97
+msgid "The user has been saved"
+msgstr ""
+
+#: Controller/UsersController.php:78;100
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:125
+msgid "User deleted"
+msgstr ""
+
+#: Controller/UsersController.php:128
+msgid "User was not deleted"
+msgstr ""
+
+#: Plugin/I18n/Controller/TranslationsController.php:146
+msgid "The translation has been saved"
+msgstr ""
+
+#: Plugin/I18n/Controller/TranslationsController.php:167;190
+msgid "Translation saved"
+msgstr ""
+
+#: Plugin/I18n/Controller/TranslationsController.php:210
+msgid "Translation deleted"
+msgstr ""
+
+#: Plugin/I18n/Model/Translation.php:112
+msgid "Could not save the translation, please check your inputs."
+msgstr ""
+
+#: Plugin/I18n/Model/Translation.php:134;171;215;237
+msgid "Invalid Translation"
+msgstr ""
+
+#: Plugin/I18n/Model/Translation.php:255
+msgid "You need to confirm to delete this Translation"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_add.ctp:4
+msgid "Admin Add Translation"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_add.ctp:17
+#: Plugin/I18n/View/Translations/admin_edit.ctp:19
+#: Plugin/I18n/View/Translations/admin_edit_multi.ctp:26
+#: Plugin/I18n/View/Translations/admin_view.ctp:40
+msgid "List Translations"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_delete.ctp:1
+msgid "Delete Translation \"%s\"?"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_delete.ctp:3
+msgid "Be aware that your Translation and all associated data will be deleted if you confirm!"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_delete.ctp:11
+msgid "Confirm"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_delete.ctp:13
+msgid "You have to confirm."
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_delete.ctp:14
+msgid "Continue"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_edit.ctp:4
+#: Plugin/I18n/View/Translations/admin_edit_multi.ctp:4
+msgid "Admin Edit Translation"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_edit.ctp:18
+#: Plugin/I18n/View/Translations/admin_index.ctp:70
+#: View/Categories/edit.ctp:9
+#: View/Categories/index.ctp:41
+#: View/Categories/view.ctp:85
+#: View/Comments/edit.ctp:9
+#: View/Comments/index.ctp:51
+#: View/Networks/edit.ctp:9
+#: View/Networks/index.ctp:41
+#: View/Networks/view.ctp:77
+#: View/Profiles/edit.ctp:9
+#: View/Profiles/index.ctp:61
+#: View/Profiles/view.ctp:111
+#: View/Users/edit.ctp:9
+#: View/Users/index.ctp:51
+#: View/Users/view.ctp:110
+msgid "Delete"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_edit_multi.ctp:22
+#: View/Categories/add.ctp:32
+#: View/Categories/edit.ctp:36
+#: View/Comments/add.ctp:40
+#: View/Comments/edit.ctp:44
+#: View/Networks/add.ctp:32
+#: View/Networks/edit.ctp:36
+#: View/Profiles/add.ctp:48
+#: View/Profiles/edit.ctp:52
+#: View/Users/add.ctp:42
+#: View/Users/edit.ctp:45
+msgid "Submit"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:2
+msgid "Translations"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:6
+#: View/Categories/index.ctp:52
+#: View/Comments/index.ctp:62
+#: View/Networks/index.ctp:52
+#: View/Profiles/index.ctp:72
+#: View/Users/index.ctp:62
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:17
+msgid "Locale Name"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:20
+msgid "Model Name"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:23
+#: Plugin/I18n/View/Translations/admin_view.ctp:24
+msgid "Field"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:26
+#: Plugin/I18n/View/Translations/admin_view.ctp:29
+msgid "Content"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:28
+msgid "Search"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:40
+#: View/Categories/index.ctp:30
+#: View/Categories/view.ctp:66
+#: View/Comments/index.ctp:34
+#: View/Networks/index.ctp:30
+#: View/Networks/view.ctp:62
+#: View/Profiles/index.ctp:40
+#: View/Profiles/view.ctp:96
+#: View/Users/index.ctp:35
+#: View/Users/view.ctp:91
+msgid "Actions"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:67
+#: View/Categories/index.ctp:39
+#: View/Categories/view.ctp:83
+#: View/Comments/index.ctp:49
+#: View/Networks/index.ctp:39
+#: View/Networks/view.ctp:75
+#: View/Profiles/index.ctp:59
+#: View/Profiles/view.ctp:109
+#: View/Users/index.ctp:49
+#: View/Users/view.ctp:108
+msgid "View"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:68
+#: View/Categories/index.ctp:40
+#: View/Categories/view.ctp:84
+#: View/Comments/index.ctp:50
+#: View/Networks/index.ctp:40
+#: View/Networks/view.ctp:76
+#: View/Profiles/index.ctp:60
+#: View/Profiles/view.ctp:110
+#: View/Users/index.ctp:50
+#: View/Users/view.ctp:109
+msgid "Edit"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:69
+msgid "Edit All locales for this entry"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_index.ctp:80
+#: Plugin/I18n/View/Translations/admin_view.ctp:41
+msgid "New Translation"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_view.ctp:2
+msgid "Translation"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_view.ctp:4
+#: View/Categories/view.ctp:31;58
+#: View/Comments/view.ctp:33
+#: View/Networks/view.ctp:31;58
+#: View/Profiles/view.ctp:35;92
+#: View/Users/view.ctp:31;83
+msgid "Id"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_view.ctp:9
+msgid "Locale"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_view.ctp:14
+msgid "Model"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_view.ctp:19
+msgid "Foreign Key"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_view.ctp:38
+msgid "Edit Translation"
+msgstr ""
+
+#: Plugin/I18n/View/Translations/admin_view.ctp:39
+msgid "Delete Translation"
+msgstr ""
+
+#: View/Categories/add.ctp:9
+#: View/Categories/edit.ctp:10
+#: View/Categories/view.ctp:11
+#: View/Profiles/add.ctp:10
+#: View/Profiles/edit.ctp:11
+#: View/Profiles/index.ctp:10
+#: View/Profiles/view.ctp:13
+msgid "List Categories"
+msgstr ""
+
+#: View/Categories/add.ctp:10
+#: View/Categories/edit.ctp:11
+#: View/Categories/index.ctp:10
+#: View/Categories/view.ctp:13
+#: View/Comments/add.ctp:10
+#: View/Comments/edit.ctp:11
+#: View/Comments/index.ctp:10
+#: View/Comments/view.ctp:13
+#: View/Profiles/add.ctp:9
+#: View/Profiles/edit.ctp:10
+#: View/Profiles/view.ctp:11
+#: View/Users/add.ctp:10
+#: View/Users/edit.ctp:11
+#: View/Users/index.ctp:10
+#: View/Users/view.ctp:13
+msgid "List Profiles"
+msgstr ""
+
+#: View/Categories/add.ctp:11
+#: View/Categories/edit.ctp:12
+#: View/Categories/index.ctp:11
+#: View/Categories/view.ctp:14;97
+#: View/Comments/add.ctp:11
+#: View/Comments/edit.ctp:12
+#: View/Comments/index.ctp:11
+#: View/Comments/view.ctp:14
+#: View/Profiles/index.ctp:9
+#: View/Profiles/view.ctp:12
+#: View/Users/add.ctp:11
+#: View/Users/edit.ctp:12
+#: View/Users/index.ctp:11
+#: View/Users/view.ctp:14;122
+msgid "New Profile"
+msgstr ""
+
+#: View/Categories/add.ctp:20
+msgid "Add Category"
+msgstr ""
+
+#: View/Categories/add.ctp:29
+#: View/Categories/edit.ctp:33
+#: View/Categories/index.ctp:29
+#: View/Networks/add.ctp:29
+#: View/Networks/edit.ctp:33
+#: View/Networks/index.ctp:29
+msgid "title"
+msgstr ""
+
+#: View/Categories/edit.ctp:9
+#: View/Categories/index.ctp:41
+#: View/Categories/view.ctp:10;85
+#: View/Comments/edit.ctp:9
+#: View/Comments/index.ctp:51
+#: View/Comments/view.ctp:10
+#: View/Networks/edit.ctp:9
+#: View/Networks/index.ctp:41
+#: View/Networks/view.ctp:10;77
+#: View/Profiles/edit.ctp:9
+#: View/Profiles/index.ctp:61
+#: View/Profiles/view.ctp:10;111
+#: View/Users/edit.ctp:9
+#: View/Users/index.ctp:51
+#: View/Users/view.ctp:10;110
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: View/Categories/edit.ctp:21
+#: View/Categories/view.ctp:9
+msgid "Edit Category"
+msgstr ""
+
+#: View/Categories/index.ctp:9
+#: View/Categories/view.ctp:12
+#: View/Profiles/add.ctp:11
+#: View/Profiles/edit.ctp:12
+#: View/Profiles/index.ctp:11
+#: View/Profiles/view.ctp:14
+msgid "New Category"
+msgstr ""
+
+#: View/Categories/index.ctp:22
+msgid "Categories"
+msgstr ""
+
+#: View/Categories/index.ctp:28
+#: View/Comments/edit.ctp:32
+#: View/Comments/index.ctp:30
+#: View/Networks/edit.ctp:30
+#: View/Networks/index.ctp:28
+#: View/Profiles/edit.ctp:34
+#: View/Profiles/index.ctp:32
+#: View/Users/edit.ctp:30
+#: View/Users/index.ctp:28
+msgid "id"
+msgstr ""
+
+#: View/Categories/index.ctp:59
+#: View/Comments/index.ctp:69
+#: View/Networks/index.ctp:59
+#: View/Profiles/index.ctp:79
+#: View/Users/index.ctp:69
+msgid "Previous"
+msgstr ""
+
+#: View/Categories/index.ctp:61
+#: View/Comments/index.ctp:71
+#: View/Networks/index.ctp:61
+#: View/Profiles/index.ctp:81
+#: View/Users/index.ctp:71
+msgid "Next"
+msgstr ""
+
+#: View/Categories/view.ctp:10
+msgid "Delete Category"
+msgstr ""
+
+#: View/Categories/view.ctp:26
+#: View/Profiles/view.ctp:55
+msgid "Category"
+msgstr ""
+
+#: View/Categories/view.ctp:36
+#: View/Networks/view.ctp:36
+msgid "Title"
+msgstr ""
+
+#: View/Categories/view.ctp:50
+#: View/Users/view.ctp:75
+msgid "Related Profiles"
+msgstr ""
+
+#: View/Categories/view.ctp:59
+#: View/Profiles/view.ctp:40
+#: View/Users/view.ctp:84
+msgid "Name"
+msgstr ""
+
+#: View/Categories/view.ctp:60
+#: View/Profiles/view.ctp:45
+#: View/Users/view.ctp:85
+msgid "LastName"
+msgstr ""
+
+#: View/Categories/view.ctp:61
+#: View/Profiles/view.ctp:50
+#: View/Users/view.ctp:51;86
+msgid "Email"
+msgstr ""
+
+#: View/Categories/view.ctp:62
+#: View/Users/view.ctp:87
+msgid "Category Id"
+msgstr ""
+
+#: View/Categories/view.ctp:63
+#: View/Users/view.ctp:88
+msgid "User Id"
+msgstr ""
+
+#: View/Categories/view.ctp:64
+#: View/Profiles/view.ctp:65
+#: View/Users/view.ctp:56;89
+msgid "Created"
+msgstr ""
+
+#: View/Categories/view.ctp:65
+#: View/Profiles/view.ctp:70
+#: View/Users/view.ctp:61;90
+msgid "Modified"
+msgstr ""
+
+#: View/Comments/add.ctp:9
+#: View/Comments/edit.ctp:10
+#: View/Comments/view.ctp:11
+#: View/Networks/add.ctp:10
+#: View/Networks/edit.ctp:11
+#: View/Networks/index.ctp:10
+#: View/Networks/view.ctp:13
+#: View/Profiles/add.ctp:14
+#: View/Profiles/edit.ctp:15
+#: View/Profiles/index.ctp:14
+#: View/Profiles/view.ctp:17
+msgid "List Comments"
+msgstr ""
+
+#: View/Comments/add.ctp:12
+#: View/Comments/edit.ctp:13
+#: View/Comments/index.ctp:12
+#: View/Comments/view.ctp:15
+#: View/Networks/add.ctp:9
+#: View/Networks/edit.ctp:10
+#: View/Networks/view.ctp:11
+msgid "List Networks"
+msgstr ""
+
+#: View/Comments/add.ctp:13
+#: View/Comments/edit.ctp:14
+#: View/Comments/index.ctp:13
+#: View/Comments/view.ctp:16
+#: View/Networks/index.ctp:9
+#: View/Networks/view.ctp:12
+msgid "New Network"
+msgstr ""
+
+#: View/Comments/add.ctp:22
+msgid "Add Comment"
+msgstr ""
+
+#: View/Comments/add.ctp:31
+#: View/Comments/edit.ctp:35
+#: View/Comments/index.ctp:31
+msgid "comment"
+msgstr ""
+
+#: View/Comments/edit.ctp:23
+#: View/Comments/view.ctp:9
+msgid "Edit Comment"
+msgstr ""
+
+#: View/Comments/index.ctp:9
+#: View/Comments/view.ctp:12
+#: View/Networks/add.ctp:11
+#: View/Networks/edit.ctp:12
+#: View/Networks/index.ctp:11
+#: View/Networks/view.ctp:14;89
+#: View/Profiles/add.ctp:15
+#: View/Profiles/edit.ctp:16
+#: View/Profiles/index.ctp:15
+#: View/Profiles/view.ctp:18;123
+msgid "New Comment"
+msgstr ""
+
+#: View/Comments/index.ctp:24
+msgid "Comments"
+msgstr ""
+
+#: View/Comments/view.ctp:10
+msgid "Delete Comment"
+msgstr ""
+
+#: View/Comments/view.ctp:28;38
+#: View/Networks/view.ctp:59
+#: View/Profiles/view.ctp:93
+msgid "Comment"
+msgstr ""
+
+#: View/Comments/view.ctp:43
+#: View/Profiles/view.ctp:30
+msgid "Profile"
+msgstr ""
+
+#: View/Comments/view.ctp:48
+#: View/Networks/view.ctp:26
+msgid "Network"
+msgstr ""
+
+#: View/Networks/add.ctp:20
+msgid "Add Network"
+msgstr ""
+
+#: View/Networks/edit.ctp:21
+#: View/Networks/view.ctp:9
+msgid "Edit Network"
+msgstr ""
+
+#: View/Networks/index.ctp:22
+msgid "Networks"
+msgstr ""
+
+#: View/Networks/view.ctp:10
+msgid "Delete Network"
+msgstr ""
+
+#: View/Networks/view.ctp:50
+#: View/Profiles/view.ctp:84
+msgid "Related Comments"
+msgstr ""
+
+#: View/Networks/view.ctp:60
+#: View/Profiles/view.ctp:94
+msgid "Profile Id"
+msgstr ""
+
+#: View/Networks/view.ctp:61
+#: View/Profiles/view.ctp:95
+msgid "Network Id"
+msgstr ""
+
+#: View/Profiles/add.ctp:12
+#: View/Profiles/edit.ctp:13
+#: View/Profiles/index.ctp:12
+#: View/Profiles/view.ctp:15
+#: View/Users/add.ctp:9
+#: View/Users/edit.ctp:10
+#: View/Users/view.ctp:11
+msgid "List Users"
+msgstr ""
+
+#: View/Profiles/add.ctp:13
+#: View/Profiles/edit.ctp:14
+#: View/Profiles/index.ctp:13
+#: View/Profiles/view.ctp:16
+#: View/Users/index.ctp:9
+#: View/Users/view.ctp:12
+msgid "New User"
+msgstr ""
+
+#: View/Profiles/add.ctp:24
+msgid "Add Profile"
+msgstr ""
+
+#: View/Profiles/add.ctp:33
+#: View/Profiles/edit.ctp:37
+#: View/Profiles/index.ctp:33
+msgid "name"
+msgstr ""
+
+#: View/Profiles/add.ctp:36
+#: View/Profiles/edit.ctp:40
+#: View/Profiles/index.ctp:34
+msgid "lastName"
+msgstr ""
+
+#: View/Profiles/add.ctp:39
+#: View/Profiles/edit.ctp:43
+#: View/Profiles/index.ctp:35
+#: View/Users/add.ctp:39
+#: View/Users/edit.ctp:42
+#: View/Users/index.ctp:32
+#: Model/Profile.php:validation for field email
+#: Model/User.php:validation for field email
+msgid "email"
+msgstr ""
+
+#: View/Profiles/edit.ctp:25
+#: View/Profiles/view.ctp:9
+msgid "Edit Profile"
+msgstr ""
+
+#: View/Profiles/index.ctp:26
+msgid "Profiles"
+msgstr ""
+
+#: View/Profiles/index.ctp:38
+#: View/Users/index.ctp:33
+msgid "created"
+msgstr ""
+
+#: View/Profiles/index.ctp:39
+#: View/Users/index.ctp:34
+msgid "modified"
+msgstr ""
+
+#: View/Profiles/view.ctp:10
+msgid "Delete Profile"
+msgstr ""
+
+#: View/Profiles/view.ctp:60
+#: View/Users/view.ctp:26
+msgid "User"
+msgstr ""
+
+#: View/Themed/Cakestrap/Elements/menu/top_menu.ctp:19
+msgid "Hello "
+msgstr ""
+
+#: View/Themed/Cakestrap/Elements/menu/top_menu.ctp:23
+msgid "add user"
+msgstr ""
+
+#: View/Themed/Cakestrap/Elements/menu/top_menu.ctp:29
+msgid "Logout"
+msgstr ""
+
+#: View/Themed/Cakestrap/Elements/menu/top_menu.ctp:34
+#: View/Users/login.ctp:13
+msgid "Login"
+msgstr ""
+
+#: View/Users/add.ctp:20
+msgid "Add User"
+msgstr ""
+
+#: View/Users/add.ctp:29
+#: View/Users/edit.ctp:33
+#: View/Users/index.ctp:29
+#: View/Users/login.ctp:9
+msgid "username"
+msgstr ""
+
+#: View/Users/add.ctp:32
+#: View/Users/edit.ctp:36
+#: View/Users/index.ctp:30
+#: View/Users/login.ctp:10
+msgid "password"
+msgstr ""
+
+#: View/Users/add.ctp:35
+#: View/Users/edit.ctp:39
+#: View/Users/index.ctp:31
+msgid "role"
+msgstr ""
+
+#: View/Users/edit.ctp:21
+#: View/Users/view.ctp:9
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/index.ctp:22
+msgid "Users"
+msgstr ""
+
+#: View/Users/login.ctp:6
+msgid "Please enter your username and password"
+msgstr ""
+
+#: View/Users/view.ctp:10
+msgid "Delete User"
+msgstr ""
+
+#: View/Users/view.ctp:36
+msgid "Username"
+msgstr ""
+
+#: View/Users/view.ctp:41
+msgid "Password"
+msgstr ""
+
+#: View/Users/view.ctp:46
+msgid "Role"
+msgstr ""
+
+#: Model/Category.php:validation for field title
+#: Model/Comment.php:validation for field comment
+#: Model/Network.php:validation for field title
+#: Model/Profile.php:validation for field name;validation for field lastName
+#: Model/User.php:validation for field username;validation for field password
+msgid "notBlank"
+msgstr ""
+
+#: Model/Comment.php:validation for field profile_id;validation for field network_id
+#: Model/Profile.php:validation for field category_id;validation for field user_id
+msgid "numeric"
+msgstr ""
+
+#: Model/User.php:validation for field role
+msgid "inList"
+msgstr ""
+
+#: Plugin/I18n/Model/Translation.php:validation for field locale
+msgid "Please enter a Locale"
+msgstr ""
+
+#: Plugin/I18n/Model/Translation.php:validation for field model
+msgid "Please enter a Model"
+msgstr ""
+
+#: Plugin/I18n/Model/Translation.php:validation for field foreign_key
+msgid "Please enter a Foreign Key"
+msgstr ""
+
+#: Plugin/I18n/Model/Translation.php:validation for field field
+msgid "Please enter a Field"
+msgstr ""
+
