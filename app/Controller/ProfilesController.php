@@ -10,6 +10,8 @@ App::uses('AppController', 'Controller');
  */
 class ProfilesController extends AppController {
 
+    public $helpers = array('Js');
+    
     /**
      * Components
      *
@@ -65,7 +67,10 @@ class ProfilesController extends AppController {
         $categories = $this->Profile->Category->find('list');
         $users = $this->Profile->User->find('list');
         $activities = $this->Profile->Activity->find('list');
-        $this->set(compact('categories', 'users', 'activities'));
+        $countries = $this->Profile->State->Country->find('list');
+        $states = array('choisir categorie');
+        $this->set(compact('categories', 'users', 'activities', 'countries', 'states'));
+      
     }
 
     /**
@@ -99,7 +104,9 @@ class ProfilesController extends AppController {
         $categories = $this->Profile->Category->find('list');
         $users = $this->Profile->User->find('list');
         $activities = $this->Profile->Activity->find('list');
-        $this->set(compact('categories', 'users', 'activities'));
+        $countries = $this->Profile->State->Country->find('list');
+        $states = array('choisir categorie');
+         $this->set(compact('categories', 'users', 'activities', 'countries', 'states'));
     }
 
     /**

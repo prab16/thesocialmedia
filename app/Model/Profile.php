@@ -7,10 +7,18 @@ App::uses('AppModel', 'Model');
  *
  * @property Category $Category
  * @property User $User
+ * @property State $State
  * @property Comment $Comment
  * @property Activity $Activity
  */
 class Profile extends AppModel {
+
+    /**
+     * Display field
+     *
+     * @var string
+     */
+    public $displayField = 'name';
 
     /**
      * Validation rules
@@ -93,6 +101,16 @@ class Profile extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'state_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+            //'message' => 'Your custom message here',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
     );
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -113,6 +131,13 @@ class Profile extends AppModel {
         'User' => array(
             'className' => 'User',
             'foreignKey' => 'user_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+        'State' => array(
+            'className' => 'State',
+            'foreignKey' => 'state_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''
@@ -160,8 +185,8 @@ class Profile extends AppModel {
             'finderQuery' => '',
         )
     );
-
-    public function isOwnedBy($post, $user) {
+    
+     public function isOwnedBy($post, $user) {
         return $this->field('id', array('id' => $post, 'user_id' => $user)) !== false;
     }
 

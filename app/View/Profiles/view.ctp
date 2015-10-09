@@ -92,7 +92,11 @@
 			<?php echo h($profile['Profile']['modified']); ?>
                                 &nbsp;
                             </td>
-                        </tr>					</tbody>
+                        </tr><tr>               <td><strong><?php echo __('State'); ?></strong></td>
+		<td>
+			<?php echo $this->Html->link($profile['State']['name'], array('controller' => 'states', 'action' => 'view', $profile['State']['id'])); ?>
+			&nbsp;
+                </td></tr>					</tbody>
                 </table><!-- /.table table-striped table-bordered -->
 <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) {echo $this->Html->link(__('Edit Profile'), array('action' => 'edit', $profile['Profile']['id']), array('class' => 'btn btn-large btn-primary'));} ?> 
        <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) { echo $this->Form->postLink(__('Delete Profile'), array('action' => 'delete', $profile['Profile']['id']), array('class' => 'btn btn-large btn-primary'), __('Are you sure you want to delete # %s?', $profile['Profile']['id']));} ?> 

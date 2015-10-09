@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 17 Septembre 2015 à 23:11
+-- Généré le :  Jeu 08 Octobre 2015 à 23:19
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.3.28
 
@@ -84,6 +84,26 @@ INSERT INTO `comments` (`id`, `comment`, `profile_id`, `network_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `countries`
+--
+
+CREATE TABLE IF NOT EXISTS `countries` (
+`id` int(11) NOT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `countries`
+--
+
+INSERT INTO `countries` (`id`, `name`) VALUES
+(1, 'Canada'),
+(2, 'United-States'),
+(3, 'Mexico');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `networks`
 --
 
@@ -112,21 +132,24 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `lastName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `created` date NOT NULL,
-  `modified` date NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+  `modified` date NOT NULL,
+  `state_id` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `profiles`
 --
 
-INSERT INTO `profiles` (`id`, `name`, `lastName`, `email`, `category_id`, `user_id`, `created`, `modified`) VALUES
-(3, 'prab', 'prab', 'prab@prab.com', 2, 3, '2015-09-10', '2015-09-17'),
-(4, 'profile1 mofiier', 'profile1', 'profile1@profile1.com', 2, 4, '2015-09-10', '2015-09-10'),
-(5, 'profile2', 'profile2', 'profile2@profile2.com', 3, 5, '2015-09-10', '2015-09-10'),
-(6, 'Admin', 'Admin', 'admin@admin.com', 2, 3, '2015-09-17', '2015-09-17');
+INSERT INTO `profiles` (`id`, `name`, `lastName`, `email`, `avatar`, `category_id`, `user_id`, `created`, `modified`, `state_id`) VALUES
+(3, 'prab', 'prab', 'prab@prab.com', '', 2, 3, '2015-09-10', '2015-09-17', 0),
+(4, 'profile1 mofiier', 'profile1', 'profile1@profile1.com', '', 2, 4, '2015-09-10', '2015-09-10', 0),
+(5, 'profile2', 'profile2', 'profile2@profile2.com', '', 3, 5, '2015-09-10', '2015-09-10', 0),
+(6, 'Admin', 'Admin', 'admin@admin.com', '', 2, 3, '2015-09-17', '2015-09-17', 0),
+(7, 'sosa', 'sosa', 'sosa@sosa.com', 'uploads/index.png', 1, 3, '2015-10-08', '2015-10-08', 0);
 
 -- --------------------------------------------------------
 
@@ -147,6 +170,39 @@ CREATE TABLE IF NOT EXISTS `profiles_activities` (
 INSERT INTO `profiles_activities` (`id`, `profile_id`, `activity_id`) VALUES
 (1, 3, 2),
 (2, 3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `states`
+--
+
+CREATE TABLE IF NOT EXISTS `states` (
+`id` int(11) NOT NULL,
+  `name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `country_id` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+
+--
+-- Contenu de la table `states`
+--
+
+INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
+(1, 'Quebec', 1),
+(2, 'Ontario', 1),
+(3, 'Alberta', 1),
+(4, 'Brirtish-Colombia', 1),
+(5, 'Manitoba', 1),
+(6, 'Kentucky', 2),
+(7, 'Virginia', 2),
+(8, 'Pennsylvania', 2),
+(9, ' Massachusetts', 2),
+(10, 'Alaska', 2),
+(11, 'Chihuahua', 3),
+(12, 'Sonora', 3),
+(13, 'Coahuila', 3),
+(14, 'Durango', 3),
+(15, 'Oaxaca', 3);
 
 -- --------------------------------------------------------
 
@@ -198,6 +254,12 @@ ALTER TABLE `comments`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `countries`
+--
+ALTER TABLE `countries`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `networks`
 --
 ALTER TABLE `networks`
@@ -213,6 +275,12 @@ ALTER TABLE `profiles`
 -- Index pour la table `profiles_activities`
 --
 ALTER TABLE `profiles_activities`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `states`
+--
+ALTER TABLE `states`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -241,6 +309,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 ALTER TABLE `comments`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT pour la table `countries`
+--
+ALTER TABLE `countries`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT pour la table `networks`
 --
 ALTER TABLE `networks`
@@ -249,12 +322,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT pour la table `profiles`
 --
 ALTER TABLE `profiles`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `profiles_activities`
 --
 ALTER TABLE `profiles_activities`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `states`
+--
+ALTER TABLE `states`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
