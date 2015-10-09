@@ -78,7 +78,7 @@
 
 </div><!-- /#page-container .row-fluid -->
 <?php
-$this->Js->get('#ProfileCrountryId')->event('click', 
+$this->Js->get('#ProfileCountryId')->event('click', 
 $this->Js->request(array(
 'controller'=>'states',
 'action'=>'getByCountry'
