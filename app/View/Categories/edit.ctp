@@ -39,10 +39,10 @@
 						<?php echo $this->Form->input('id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input(__('title'), array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input(('title'), array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 
-					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary')); ?>
+					<?php echo $this->Form->submit(('Submit'), array('class' => 'btn btn-large btn-primary')); ?>
 <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Category.id')), array('class' => 'btn btn-large btn-primary'), __('Are you sure you want to delete # %s?', $this->Form->value('Category.id'))); ?>
 				</fieldset>
 

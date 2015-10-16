@@ -33,6 +33,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 			echo $this->Html->css('bootstrap');
 			echo $this->Html->css('main');
+                        
+                         echo $this->Html->css('https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css');
 
 			echo $this->fetch('css');
 			

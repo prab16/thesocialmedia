@@ -48,3 +48,5 @@ Router::connect('/', array('controller' => 'profiles', 'action' => 'index'), arr
 );
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'), array('routeClass' => 'I18nRoute')
 );
+
+Router::parseExtensions();

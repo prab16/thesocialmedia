@@ -54,5 +54,17 @@ class Network extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+        public function getNetworkNames($term = null) {
+        if (!empty($term)) {
+            $networkNames = $this->find('list', array(
+                'conditions' => array(
+                    'title LIKE' => trim($term) . '%'
+                )
+            ));
+                     
+        return $networkNames;
+        }
+        return false;
+    }
 
 }

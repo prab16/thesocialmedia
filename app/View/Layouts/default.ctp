@@ -30,6 +30,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
+                <?php
+      echo $this->Html->css('https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css');
+    ?>
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -60,6 +63,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             </div>
         </div>
 	
-
+  <?php echo $content_for_layout; ?>
+<?php echo $scripts_for_layout; ?>
     </body>
 </html>

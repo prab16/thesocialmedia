@@ -31,10 +31,10 @@
 				<fieldset>
 
 					<div class="form-group">
-						<?php echo $this->Form->input(__('title'), array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input(('title'), array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 
-					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary')); ?>
+					<?php echo $this->Form->submit(('Submit'), array('class' => 'btn btn-large btn-primary')); ?>
 
 				</fieldset>
 
