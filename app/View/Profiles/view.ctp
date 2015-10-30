@@ -64,7 +64,7 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Category'); ?></strong></td>
                             <td>
-			<?php  if ($this->Session->check('Auth.User')) { 
+			<?php  if ($this->Session->check('Auth.User') && $this->Session->read('Auth.User.confirm') == "1") { 
                             echo $this->Html->link($profile['Category']['title'], array('controller' => 'categories', 'action' => 'view', $profile['Category']['id']), array('class' => '')); 
                         }else{
                             echo h($profile['Category']['title']);
@@ -74,7 +74,7 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('User'); ?></strong></td>
                             <td>
-			<?php   if ($this->Session->check('Auth.User')) { 
+			<?php   if ($this->Session->check('Auth.User') && $this->Session->read('Auth.User.confirm') == "1") { 
                             echo $this->Html->link($profile['User']['username'], array('controller' => 'users', 'action' => 'view', $profile['User']['id']), array('class' => '')); 
                         }else{
                              echo h($profile['User']['username']);
@@ -92,14 +92,25 @@
 			<?php echo h($profile['Profile']['modified']); ?>
                                 &nbsp;
                             </td>
+                        </tr><tr>               <td><strong><?php echo __('Country'); ?></strong></td>
+		<td>
+                    
+			<?php 
+                        
+                        echo $this->Html->link($country, array('controller' => 'countries', 'action' => 'view', $profile['State']['id']));?>
+			&nbsp; 
+                </td>
                         </tr><tr>               <td><strong><?php echo __('State'); ?></strong></td>
 		<td>
-			<?php echo $this->Html->link($profile['State']['name'], array('controller' => 'states', 'action' => 'view', $profile['State']['id'])); ?>
-			&nbsp;
+                    
+			<?php 
+                        
+                        echo $this->Html->link($profile['State']['name'], array('controller' => 'states', 'action' => 'view', $profile['State']['id']));?>
+			&nbsp; 
                 </td></tr>					</tbody>
                 </table><!-- /.table table-striped table-bordered -->
-<?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) {echo $this->Html->link(__('Edit Profile'), array('action' => 'edit', $profile['Profile']['id']), array('class' => 'btn btn-large btn-primary'));} ?> 
-       <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) { echo $this->Form->postLink(__('Delete Profile'), array('action' => 'delete', $profile['Profile']['id']), array('class' => 'btn btn-large btn-primary'), __('Are you sure you want to delete # %s?', $profile['Profile']['id']));} ?> 
+<?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "1") {echo $this->Html->link(__('Edit Profile'), array('action' => 'edit', $profile['Profile']['id']), array('class' => 'btn btn-large btn-primary'));} ?> 
+       <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "1") { echo $this->Form->postLink(__('Delete Profile'), array('action' => 'delete', $profile['Profile']['id']), array('class' => 'btn btn-large btn-primary'), __('Are you sure you want to delete # %s?', $profile['Profile']['id']));} ?> 
         
             
             </div><!-- /.table-responsive -->
@@ -135,8 +146,8 @@
                             <td><?php echo $comment['network_id']; ?></td>
                             <td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'comments', 'action' => 'view', $comment['id']), array('class' => 'btn btn-default btn-xs')); ?>
-                                <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) { echo $this->Html->link(__('Edit'), array('controller' => 'comments', 'action' => 'edit', $comment['id']), array('class' => 'btn btn-default btn-xs'));} ?>
-                                <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) { echo $this->Form->postLink(__('Delete'), array('controller' => 'comments', 'action' => 'delete', $comment['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $comment['id']));} ?>
+                                <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "1") { echo $this->Html->link(__('Edit'), array('controller' => 'comments', 'action' => 'edit', $comment['id']), array('class' => 'btn btn-default btn-xs'));} ?>
+                                <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "1") { echo $this->Form->postLink(__('Delete'), array('controller' => 'comments', 'action' => 'delete', $comment['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $comment['id']));} ?>
                             </td>
                         </tr>
 	<?php endforeach; ?>
@@ -148,7 +159,7 @@
 
 
             <div class="actions">
-                                        <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) { echo $this->Html->link('<i class="icon-plus icon-white"></i> '.__('New Comment'), array('controller' => 'comments', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); }?>				</div><!-- /.actions -->
+                                        <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id' ) == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "0") { echo $this->Html->link('<i class="icon-plus icon-white"></i> '.__('New Comment'), array('controller' => 'comments', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); }?>				</div><!-- /.actions -->
 
         </div><!-- /.related -->
 
@@ -177,8 +188,8 @@
                             <td><?php echo $activity['name']; ?></td>
                             <td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'activities', 'action' => 'view', $activity['id']), array('class' => 'btn btn-default btn-xs')); ?>
-                                <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) { echo $this->Html->link(__('Edit'), array('controller' => 'activities', 'action' => 'edit', $activity['id']), array('class' => 'btn btn-default btn-xs'));} ?>
-                                <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) { echo $this->Form->postLink(__('Delete'), array('controller' => 'activities', 'action' => 'delete', $activity['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $activity['id']));} ?>
+                                <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "1") { echo $this->Html->link(__('Edit'), array('controller' => 'activities', 'action' => 'edit', $activity['id']), array('class' => 'btn btn-default btn-xs'));} ?>
+                                <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "1") { echo $this->Form->postLink(__('Delete'), array('controller' => 'activities', 'action' => 'delete', $activity['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $activity['id']));} ?>
                             </td>
                         </tr>
 	<?php endforeach; ?>
@@ -190,7 +201,7 @@
 
 
             <div class="actions">
-                                        <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) { echo $this->Html->link('<i class="icon-plus icon-white"></i> '.__('New Activity'), array('controller' => 'activities', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false));} ?>				
+                                        <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "1") { echo $this->Html->link('<i class="icon-plus icon-white"></i> '.__('New Activity'), array('controller' => 'activities', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false));} ?>				
             </div><!-- /.actions -->
 
         </div><!-- /.related -->

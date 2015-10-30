@@ -34,7 +34,7 @@
 
         <div class="profiles form">
 
-			<?php echo $this->Form->create('Profile', array('role' => 'form')); ?>
+			<?php echo $this->Form->create('Profile', array('type'=> 'file','role' => 'form')); ?>
 
             <fieldset>
 
@@ -51,7 +51,15 @@
 						<?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-							<?php echo $this->Form->input('avatar', array('type'=>'file'));?>
+                    
+							<?php 
+                                                        echo $this->Form->input('avatar', array('type'=>'file','options' => array($this->request->data['Profile']['avatar'])));
+                                                       if(strlen($this->request->data['Profile']['avatar']) > 0){
+                                                            echo $this->Html->image($this->request->data['Profile']['avatar'], array('escape' => false , 'width' => '100' , 'height' => '100'));
+                                                        }else{
+                                                            echo "Aucune Image Selectionné";
+                                                        }
+                                                        ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
 						<?php echo $this->Form->input('category_id', array('class' => 'form-control')); ?>
@@ -63,7 +71,10 @@
 							<?php echo $this->Form->input('Activity', array('multiple' => 'checkbox'));?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                                             <?php echo $this->Form->input('country_id', array('class' => 'form-control')); ?>
+                                             <?php 
+                                            
+                                             echo'<b>Country</b>';
+                                             echo $this->Form->select('country_id',$countries,array( 'value' => $countrySelected['Country']['id'], 'empty'=>false ,'class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
                                         <?php echo $this->Form->input('state_id', array('class' => 'form-control')); ?>
@@ -84,7 +95,7 @@
 
 </div><!-- /#page-container .row-fluid -->
 <?php
-$this->Js->get('#ProfileCrountryId')->event('click', 
+$this->Js->get('#ProfileCountryId')->event('click', 
 $this->Js->request(array(
 'controller'=>'states',
 'action'=>'getByCountry'

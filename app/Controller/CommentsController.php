@@ -91,10 +91,18 @@ class CommentsController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        $this->Comment->recursive = 1;
         $this->Comment->id = $id;
         if (!$this->Comment->exists($id)) {
             throw new NotFoundException(__('Invalid comment'));
         }
+         if ($this->request->is('ajax')) {
+            $term = $this->request->query('term');
+            $networkNames = $this->Comment->Network->getNetworkNames($term);
+            //$networks = "SOSA";
+            $this->set(compact('networkNames'));
+            $this->set('_serialize', 'networkNames');
+        }else
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Comment->save($this->request->data)) {
                 $this->Session->setFlash(__('The comment has been saved'), 'flash/success');
@@ -107,7 +115,8 @@ class CommentsController extends AppController {
             $this->request->data = $this->Comment->find('first', $options);
         }
         $profiles = $this->Comment->Profile->find('list');
-        $networks = $this->Comment->Network->find('list');
+         $networks = $this->Comment->Network->find('list');
+        
         $this->set(compact('profiles', 'networks'));
     }
 
@@ -133,6 +142,19 @@ class CommentsController extends AppController {
         }
         $this->Session->setFlash(__('Comment was not deleted'), 'flash/error');
         $this->redirect(array('action' => 'index'));
+    }
+    
+    public function isAuthorized($user) {
+
+        // The admin can edit, delete and add
+        if (in_array($this->action, array('edit', 'delete', 'add'))) {
+
+            if ($this->Session->check('Auth.User.confirm') == "1") {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
     }
 
 }

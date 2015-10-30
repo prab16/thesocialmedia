@@ -17,7 +17,7 @@ class ProfilesController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'Flash', 'Session');
 
     /**
      * index method
@@ -42,6 +42,14 @@ class ProfilesController extends AppController {
         }
         $options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
         $this->set('profile', $this->Profile->find('first', $options));
+        $profile = $this->Profile->find('first', $options);
+        $stateId = $profile['Profile']['state_id'];
+        $stateSelected = $this->Profile->State->findById($stateId);
+        $countryId = $stateSelected['State']['country_id'];
+        $countrySelected = $this->Profile->State->Country->findById($countryId);
+        //debug($countrySelected);die();
+        $countryName = $countrySelected['Country']['name'];
+        $this->set('country', $countryName);
     }
 
     /**
@@ -54,10 +62,13 @@ class ProfilesController extends AppController {
             $this->Profile->create();
             $this->request->data['Profile']['user_id'] = $this->Auth->user('id');
             $data = $this->request->data['Profile'];
+            if($data['state_id'] == 0){
+                $data['state_id'] = null;
+            }
             if (!$data['avatar']['name']){
                 unset($data['avatar']);
             }
-            if ($this->Profile->save($this->request->data)) {
+            if ($this->Profile->save($data)) {
                 $this->Session->setFlash(__('The profile has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'index'));
             } else {
@@ -91,7 +102,7 @@ class ProfilesController extends AppController {
             if (!$data['avatar']['name']){
                 unset($data['avatar']);
             }
-            if ($this->Profile->save($this->request->data)) {
+            if ($this->Profile->save($data)) {
                 $this->Session->setFlash(__('The profile has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'index'));
             } else {
@@ -105,8 +116,12 @@ class ProfilesController extends AppController {
         $users = $this->Profile->User->find('list');
         $activities = $this->Profile->Activity->find('list');
         $countries = $this->Profile->State->Country->find('list');
-        $states = array('choisir categorie');
-         $this->set(compact('categories', 'users', 'activities', 'countries', 'states'));
+        $states = $this->Profile->State->find('list');
+        $stateId = $this->request->data['Profile']['state_id'];
+        $stateSelected = $this->Profile->State->findById($stateId);
+        $countryId = $stateSelected['State']['country_id'];
+        $countrySelected = $this->Profile->State->Country->findById($countryId);
+        $this->set(compact('categories', 'users', 'activities', 'countries','countrySelected', 'states'));
     }
 
     /**
@@ -140,10 +155,12 @@ class ProfilesController extends AppController {
         }
 
         // The owner of a post can edit and delete it
-        if (in_array($this->action, array('edit', 'delete'))) {
+        if (in_array($this->action, array('edit', 'delete')) ) {
             $postId = (int) $this->request->params['pass'][0];
             if ($this->Profile->isOwnedBy($postId, $user['id'])) {
+               if ($this->Session->read('Auth.User.confirm') == "1") {
                 return true;
+               }
             }
         }
 

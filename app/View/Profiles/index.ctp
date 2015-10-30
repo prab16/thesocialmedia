@@ -60,7 +60,8 @@
                                 <td><?php echo h($profile['Profile']['lastName']); ?>&nbsp;</td>
                                 <td><?php echo h($profile['Profile']['email']); ?>&nbsp;</td>
                                 <td>
-    <?php  if ($this->Session->check('Auth.User')) { 
+    <?php  if ($this->Session->check('Auth.User') && $this->Session->read('Auth.User.confirm') == "1")  { 
+
         echo $this->Html->link($profile['Category']['title'], array('controller' => 'categories', 'action' => 'view', $profile['Category']['id']), array('class' => 'label label-info')); 
         
     }else{
@@ -87,8 +88,10 @@ echo $this->Html->link($comment['comment'], array('controller' => 'comments', 'a
 
 
                                 <td>
-    <?php if ($this->Session->check('Auth.User')) { 
+    <?php if ($this->Session->check('Auth.User') && $this->Session->read('Auth.User.confirm') == "1") { 
+
         echo $this->Html->link($profile['User']['username'], array('controller' => 'users', 'action' => 'view', $profile['User']['id'])); 
+
     }else{
        echo h($profile['User']['username']);
     }
@@ -98,15 +101,16 @@ echo $this->Html->link($comment['comment'], array('controller' => 'comments', 'a
                                 <td><?php echo h($profile['Profile']['modified']); ?>&nbsp;</td>
                                 <td class="actions">
     <?php echo $this->Html->link(__('View'), array('action' => 'view', $profile['Profile']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-                                    <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) {echo $this->Html->link(__('Edit'), array('action' => 'edit', $profile['Profile']['id']), array('class' => 'btn btn-default btn-xs'));} ?>
-                                    <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id']) {echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $profile['Profile']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $profile['Profile']['id']));} ?>
+                                    <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] &&  $this->Session->read('Auth.User.confirm') == "1") {echo $this->Html->link(__('Edit'), array('action' => 'edit', $profile['Profile']['id']), array('class' => 'btn btn-default btn-xs'));} ?>
+                                    <?php  if ($this->Session->read('Auth.User.role') == "admin" || $this->Session->read('Auth.User.id') == $profile['User']['id'] && $this->Session->read('Auth.User.confirm') == "1") {echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $profile['Profile']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $profile['Profile']['id']));} ?>
                                 </td>
                             </tr>
 <?php endforeach; ?>
                     </tbody>
                 </table>
             </div><!-- /.table-responsive -->
-
+             <?php  if ($this->Session->check('Auth.User')) { echo $this->Html->link('<i class="icon-plus icon-white"></i> '.__('New Profile'), array('controller' => 'profiles', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false));} ?>				
+           
             <p><small>
 <?php
 echo $this->Paginator->counter(array(

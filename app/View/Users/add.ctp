@@ -37,8 +37,8 @@
 						<?php echo $this->Form->input('password', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-						<?php  echo $this->Form->input(__('role'), array(
-            'options' => array('admin' => 'Admin', 'profile' => 'Profile'))); ?>
+						<?php  if($this->Session->read('Auth.User.role') == "admin"){echo $this->Form->input(__('role'), array(
+                                                'options' => array('admin' => 'Admin', 'utilisateur' => 'Utilisateur')));} ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
 						<?php echo $this->Form->input('email', array('class' => 'form-control')); ?>

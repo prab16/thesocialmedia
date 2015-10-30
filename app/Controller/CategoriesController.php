@@ -109,4 +109,16 @@ class CategoriesController extends AppController {
 		$this->Session->setFlash(__('Category was not deleted'), 'flash/error');
 		$this->redirect(array('action' => 'index'));
 	}
+        public function isAuthorized($user) {
+
+        // The admin can edit, delete and add
+        if (in_array($this->action, array('edit', 'delete', 'add'))) {
+
+            if ($this->Session->check('Auth.User.confirm') == "1") {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
+    }
 }

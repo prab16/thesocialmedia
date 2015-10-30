@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.0
+-- version 4.4.11
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Jeu 08 Octobre 2015 à 23:19
--- Version du serveur :  5.6.17
--- Version de PHP :  5.3.28
+-- Client :  127.0.0.1:3306
+-- Généré le :  Ven 16 Octobre 2015 à 21:33
+-- Version du serveur :  5.5.44
+-- Version de PHP :  5.4.43
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `TheSocialMedia`
+-- Base de données :  `thesocialmedia`
 --
 
 -- --------------------------------------------------------
@@ -26,10 +26,10 @@ SET time_zone = "+00:00";
 -- Structure de la table `activities`
 --
 
-CREATE TABLE IF NOT EXISTS `activities` (
-`id` int(11) NOT NULL,
+CREATE TABLE `activities` (
+  `id` int(11) NOT NULL,
   `name` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `activities`
@@ -47,10 +47,10 @@ INSERT INTO `activities` (`id`, `name`) VALUES
 -- Structure de la table `categories`
 --
 
-CREATE TABLE IF NOT EXISTS `categories` (
-`id` int(11) NOT NULL,
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
   `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `categories`
@@ -67,19 +67,21 @@ INSERT INTO `categories` (`id`, `title`) VALUES
 -- Structure de la table `comments`
 --
 
-CREATE TABLE IF NOT EXISTS `comments` (
-`id` int(11) NOT NULL,
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
   `comment` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `profile_id` int(11) NOT NULL,
   `network_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `comments`
 --
 
 INSERT INTO `comments` (`id`, `comment`, `profile_id`, `network_id`) VALUES
-(1, 'sosa', 3, 1);
+(1, 'sosa', 3, 1),
+(2, 'commentaire', 3, 8),
+(3, 'sa', 3, 21);
 
 -- --------------------------------------------------------
 
@@ -87,10 +89,10 @@ INSERT INTO `comments` (`id`, `comment`, `profile_id`, `network_id`) VALUES
 -- Structure de la table `countries`
 --
 
-CREATE TABLE IF NOT EXISTS `countries` (
-`id` int(11) NOT NULL,
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
   `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `countries`
@@ -107,10 +109,10 @@ INSERT INTO `countries` (`id`, `name`) VALUES
 -- Structure de la table `networks`
 --
 
-CREATE TABLE IF NOT EXISTS `networks` (
-`id` int(11) NOT NULL,
+CREATE TABLE `networks` (
+  `id` int(11) NOT NULL,
   `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `networks`
@@ -119,7 +121,24 @@ CREATE TABLE IF NOT EXISTS `networks` (
 INSERT INTO `networks` (`id`, `title`) VALUES
 (1, 'facebook'),
 (2, 'gmail'),
-(3, 'myspace');
+(3, 'myspace'),
+(5, 'Tencent QQ'),
+(6, 'Tencent Qzone'),
+(7, 'Google+'),
+(8, 'Skype'),
+(9, 'Twitter '),
+(10, 'Line'),
+(11, 'RenRen'),
+(12, 'LinkedIn'),
+(13, 'Instagram'),
+(14, 'Nimbuzz'),
+(15, 'Sina Weibo'),
+(16, 'reddit'),
+(17, 'VK'),
+(18, 'Tumblr '),
+(19, 'Tencent Weibo'),
+(20, 'Tencent Qzone'),
+(21, 'Other');
 
 -- --------------------------------------------------------
 
@@ -127,8 +146,8 @@ INSERT INTO `networks` (`id`, `title`) VALUES
 -- Structure de la table `profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `profiles` (
-`id` int(11) unsigned NOT NULL,
+CREATE TABLE `profiles` (
+  `id` int(11) unsigned NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `lastName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -138,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `created` date NOT NULL,
   `modified` date NOT NULL,
   `state_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `profiles`
@@ -157,11 +176,11 @@ INSERT INTO `profiles` (`id`, `name`, `lastName`, `email`, `avatar`, `category_i
 -- Structure de la table `profiles_activities`
 --
 
-CREATE TABLE IF NOT EXISTS `profiles_activities` (
-`id` int(11) NOT NULL,
+CREATE TABLE `profiles_activities` (
+  `id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `activity_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `profiles_activities`
@@ -177,11 +196,11 @@ INSERT INTO `profiles_activities` (`id`, `profile_id`, `activity_id`) VALUES
 -- Structure de la table `states`
 --
 
-CREATE TABLE IF NOT EXISTS `states` (
-`id` int(11) NOT NULL,
+CREATE TABLE `states` (
+  `id` int(11) NOT NULL,
   `name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `country_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `states`
@@ -210,15 +229,15 @@ INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
 -- Structure de la table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) unsigned NOT NULL,
+CREATE TABLE `users` (
+  `id` int(11) unsigned NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `users`
@@ -239,55 +258,55 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`, `email`, `created`, `
 -- Index pour la table `activities`
 --
 ALTER TABLE `activities`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `categories`
 --
 ALTER TABLE `categories`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `comments`
 --
 ALTER TABLE `comments`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `countries`
 --
 ALTER TABLE `countries`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `networks`
 --
 ALTER TABLE `networks`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `profiles`
 --
 ALTER TABLE `profiles`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `profiles_activities`
 --
 ALTER TABLE `profiles_activities`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `states`
 --
 ALTER TABLE `states`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -297,47 +316,47 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `activities`
 --
 ALTER TABLE `activities`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `countries`
 --
 ALTER TABLE `countries`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `networks`
 --
 ALTER TABLE `networks`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT pour la table `profiles`
 --
 ALTER TABLE `profiles`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `profiles_activities`
 --
 ALTER TABLE `profiles_activities`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `states`
 --
 ALTER TABLE `states`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

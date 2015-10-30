@@ -1,6 +1,7 @@
 <?php
 
 if ($this->Session->check('Auth.User')) {
+    if ($this->Session->read('Auth.User.confirm') == "1" || $this->Session->read('Auth.User.role') == "admin") {
     echo 
     '<div class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">'
     . $this->Html->link(__('Profile'), array('action' => 'add'), array('class' => ''))
@@ -41,9 +42,24 @@ if ($this->Session->check('Auth.User')) {
     .'</li><li>'
     . $this->Html->link(__('List Networks'), array('controller' => 'networks', 'action' => 'index'), array('class' => ''))
     . '</li></ul></div>';
-
+    }
     if ($this->Session->read('Auth.User.role') == "admin") {
         echo "\r\n"
+        . '<div class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><div class="dropdown-toggle" data-toggle="dropdown">'
+    . $this->Html->link(__('Country'), array('controller' => 'countries', 'action' => 'add'), array('class' => ''))
+    . '<b class="caret"></b></div></button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1"><li>'
+    . $this->Html->link(__('New Country'), array('controller' => 'countries', 'action' => 'add'), array('class' => ''))
+    .'</li><li>'
+    . $this->Html->link(__('List Countries'), array('controller' => 'countries', 'action' => 'index'), array('class' => ''))        
+    . '</li></ul></div>'
+    . "\r\n"
+    . '<div class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><div class="dropdown-toggle" data-toggle="dropdown">'
+    . $this->Html->link(__('States'), array('controller' => 'states', 'action' => 'add'), array('class' => ''))
+    . '<b class="caret"></b></div></button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1"><li>'
+    . $this->Html->link(__('New State'), array('controller' => 'states', 'action' => 'add'), array('class' => ''))
+    .'</li><li>'
+    . $this->Html->link(__('List States'), array('controller' => 'states', 'action' => 'index'), array('class' => ''))
+    . '</ul></div>'
         . '<div class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><div class="dropdown-toggle" data-toggle="dropdown">'
         . $this->Html->link(__('User'), array('controller' => 'users', 'action' => 'add'), array('class' => ''))
         . '<b class="caret"></b></div></button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1"><li>'
@@ -52,6 +68,7 @@ if ($this->Session->check('Auth.User')) {
         . $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => ''))
         . '</li></ul></div>';
     }
+    
 }
 
 /* 

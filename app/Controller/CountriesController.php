@@ -3,14 +3,14 @@
 App::uses('AppController', 'Controller');
 
 /**
- * Networks Controller
+ * Countries Controller
  *
- * @property Network $Network
+ * @property Country $Country
  * @property PaginatorComponent $Paginator
  * @property FlashComponent $Flash
  * @property SessionComponent $Session
  */
-class NetworksController extends AppController {
+class CountriesController extends AppController {
 
     /**
      * Components
@@ -25,10 +25,8 @@ class NetworksController extends AppController {
      * @return void
      */
     public function index() {
-       
-            $this->Network->recursive = 1;
-            $this->set('networks', $this->paginate());
-        
+        $this->Country->recursive = 0;
+        $this->set('countries', $this->paginate());
     }
 
     /**
@@ -39,11 +37,11 @@ class NetworksController extends AppController {
      * @return void
      */
     public function view($id = null) {
-        if (!$this->Network->exists($id)) {
-            throw new NotFoundException(__('Invalid network'));
+        if (!$this->Country->exists($id)) {
+            throw new NotFoundException(__('Invalid country'));
         }
-        $options = array('conditions' => array('Network.' . $this->Network->primaryKey => $id));
-        $this->set('network', $this->Network->find('first', $options));
+        $options = array('conditions' => array('Country.' . $this->Country->primaryKey => $id));
+        $this->set('country', $this->Country->find('first', $options));
     }
 
     /**
@@ -53,13 +51,12 @@ class NetworksController extends AppController {
      */
     public function add() {
         if ($this->request->is('post')) {
-            $this->Network->create();
-            $this->request->data['Profile']['user_id'] = $this->Auth->user('id');
-            if ($this->Network->save($this->request->data)) {
-                $this->Session->setFlash(__('The network has been saved'), 'flash/success');
+            $this->Country->create();
+            if ($this->Country->save($this->request->data)) {
+                $this->Session->setFlash(__('The country has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The network could not be saved. Please, try again.'), 'flash/error');
+                $this->Session->setFlash(__('The country could not be saved. Please, try again.'), 'flash/error');
             }
         }
     }
@@ -72,20 +69,20 @@ class NetworksController extends AppController {
      * @return void
      */
     public function edit($id = null) {
-        $this->Network->id = $id;
-        if (!$this->Network->exists($id)) {
-            throw new NotFoundException(__('Invalid network'));
+        $this->Country->id = $id;
+        if (!$this->Country->exists($id)) {
+            throw new NotFoundException(__('Invalid country'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
-            if ($this->Network->save($this->request->data)) {
-                $this->Session->setFlash(__('The network has been saved'), 'flash/success');
+            if ($this->Country->save($this->request->data)) {
+                $this->Session->setFlash(__('The country has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The network could not be saved. Please, try again.'), 'flash/error');
+                $this->Session->setFlash(__('The country could not be saved. Please, try again.'), 'flash/error');
             }
         } else {
-            $options = array('conditions' => array('Network.' . $this->Network->primaryKey => $id));
-            $this->request->data = $this->Network->find('first', $options);
+            $options = array('conditions' => array('Country.' . $this->Country->primaryKey => $id));
+            $this->request->data = $this->Country->find('first', $options);
         }
     }
 
@@ -101,24 +98,24 @@ class NetworksController extends AppController {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
         }
-        $this->Network->id = $id;
-        if (!$this->Network->exists()) {
-            throw new NotFoundException(__('Invalid network'));
+        $this->Country->id = $id;
+        if (!$this->Country->exists()) {
+            throw new NotFoundException(__('Invalid country'));
         }
-        if ($this->Network->delete()) {
-            $this->Session->setFlash(__('Network deleted'), 'flash/success');
+        if ($this->Country->delete()) {
+            $this->Session->setFlash(__('Country deleted'), 'flash/success');
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Network was not deleted'), 'flash/error');
+        $this->Session->setFlash(__('Country was not deleted'), 'flash/error');
         $this->redirect(array('action' => 'index'));
     }
-    
+
     public function isAuthorized($user) {
 
         // The admin can edit, delete and add
         if (in_array($this->action, array('edit', 'delete', 'add'))) {
 
-            if ($this->Session->check('Auth.User.confirm') == "1") {
+            if ($this->Session->read('Auth.User.role') == "admin") {
                 return true;
             }
         }

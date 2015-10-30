@@ -45,7 +45,7 @@ class User extends AppModel {
         ),
         'role' => array(
             'inList' => array(
-                'rule' => array('inList', array('admin', 'profile')),
+                'rule' => array('inList', array('admin', 'utilisateur')),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,
@@ -56,6 +56,16 @@ class User extends AppModel {
         'email' => array(
             'email' => array(
                 'rule' => array('email'),
+            //'message' => 'Your custom message here',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'confirm' => array(
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,

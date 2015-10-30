@@ -14,10 +14,15 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-            $this->Auth->allow('Logout','login');
+            $this->Auth->allow('Logout','login','add','confirmEmail');
  
     }
-
+/**
+     * Components
+     *
+     * @var array
+     */
+    public $components = array('Paginator', 'Flash', 'Session');
     public function login() {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
@@ -35,12 +40,7 @@ class UsersController extends AppController {
         return $this->redirect($this->Auth->logout());
     }
 
-    /**
-     * Components
-     *
-     * @var array
-     */
-    public $components = array('Paginator', 'Flash', 'Session');
+    
 
     /**
      * index method
@@ -48,7 +48,7 @@ class UsersController extends AppController {
      * @return void
      */
     public function index() {
-        $this->User->recursive = 1;
+        $this->User->recursive = "1";
         $this->set('users', $this->paginate());
     }
 
@@ -61,12 +61,33 @@ class UsersController extends AppController {
      */
     public function view($id = null) {
         if (!$this->User->exists($id)) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Invalid user'), 'flash/error');
         }
         $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
         $this->set('user', $this->User->find('first', $options));
     }
 
+    public function confirmEmail() {
+        $email = $this->request->query['email'];
+        $this->User->recursive = "-1";
+        $user = $this->User->findByEmail($email);
+         //debug($user);die();
+       // $user = $this->User->saveField('confirm', '1');
+       $data = array('id' => $user['User']['id'], 'confirm' => '1');
+        // This will update Recipe with id 10
+        $this->User->save($data);
+        if ($this->request->is('post')) {
+           
+                $this->redirect($this->redirect(array(
+                'controller' => 'users',
+                'action' => 'login'
+            )));
+            
+        }
+        
+    }
+    
+    
     /**
      * add method
      *
@@ -75,12 +96,19 @@ class UsersController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->User->create();
+            $this->request->data['User']['confirm'] = "0";
+                if ($this->Session->read('Auth.User.role') != "admin") {
+                     $this->request->data['User']['role'] = "utilisateur";
+                }
             if ($this->User->save($this->request->data)) {
+                $d = $this->request->data;
+                $this->send_mail($d);
                 $this->Session->setFlash(__('The user has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/error');
             }
+           
         }
     }
 
@@ -131,6 +159,21 @@ class UsersController extends AppController {
         }
         $this->Session->setFlash(__('User was not deleted'), 'flash/error');
         $this->redirect(array('action' => 'index'));
+    }
+    
+  
+    
+    public function send_mail($d) {
+        
+        $confirmation_link = "http://" . $_SERVER['HTTP_HOST'] . $this->webroot . "users/confirmEmail?email=" .$d['User']['email'] ;
+   
+        $message = 'Hi,' . $d['User']['username']. ', Your Password is: '. $d['User']['password'];
+        App::uses('CakeEmail', 'Network/Email');
+        $email = new CakeEmail('gmail');
+        $email->from('aut2014.267@gmail.com');
+        $email->to($d['User']['email']);
+        $email->subject('Mail Confirmation');
+        $email->send($message . " " . $confirmation_link);
     }
 
 }

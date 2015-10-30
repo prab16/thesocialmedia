@@ -56,6 +56,16 @@ class Profile extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'category_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+            //'message' => 'Your custom message here',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
         'avatar' => array(
             // http://book.cakephp.org/2.0/en/models/data-validation.html#Validation::uploadError
             'uploadError' => array(
@@ -81,16 +91,6 @@ class Profile extends AppModel {
                 'allowEmpty' => TRUE,
             )
         ),
-        'category_id' => array(
-            'numeric' => array(
-                'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
         'user_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
@@ -104,9 +104,10 @@ class Profile extends AppModel {
         'state_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
+                
             //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
+            'allowEmpty' => false,
+            //'required' => true,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -185,8 +186,8 @@ class Profile extends AppModel {
             'finderQuery' => '',
         )
     );
-    
-     public function isOwnedBy($post, $user) {
+
+    public function isOwnedBy($post, $user) {
         return $this->field('id', array('id' => $post, 'user_id' => $user)) !== false;
     }
 

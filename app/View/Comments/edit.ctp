@@ -1,4 +1,10 @@
+<?php
 
+//let's load jquery libs from google
+  $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', array('inline' => false));
+  $this->Html->script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js', array('inline' => false));
+  $this->Html->script('View/Networks/index', array('inline' => false));
+  ?>
 <div id="page-container" class="row">
 
 	<div id="sidebar" class="col-sm-3">
@@ -44,7 +50,13 @@
 						<?php echo $this->Form->input('profile_id', array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input('network_id', array('class' => 'form-control')); ?>
+						<?php 
+                                               $networkId = $this->request->data['Comment']['network_id'];
+                     
+                                                       $networkTitle = $networks[$networkId];
+                                                
+                                                echo $this->Form->input('network_id', array('class' => 'form-control', 'id' => 'autocomplete', 
+                                                    'type' => 'text', 'value' =>  $networkTitle)); ?>
 					</div><!-- .form-group -->
 
 					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary')); ?>
