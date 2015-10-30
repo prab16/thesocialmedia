@@ -19,11 +19,11 @@
                - Autre Informations sur le cour  : Automne 2015, Collège Montmorency</h5>
             <h3>Information pour bon fonctionnement du site web</h3>
             <h4> -> Les listes interactives</h4>
-            <h5>  Les listes interactives se trouve dans l'action d'ajouter un Profile. <br />
+            <h5>  Les listes interactives se trouve dans l'action d'ajouter et éditer un Profile. <br />
                 Dans la 1er liste, il faut spécifier le pays et après la 2ème liste <br />
                 s'ajuste selon la 1er liste.</h5>
             <h4> -> Le  "auto-complétion"</h4>
-             <h5>  Le  "auto-complétion" se trouve dans l'action d'ajouter un Commentaire. <br />
+             <h5>  Le  "auto-complétion" se trouve dans l'action d'ajouter et éditer un Commentaire. <br />
                  Dans le champ réseau Social, il faut taper un ou plusieur lettre <br />
                  (par exemple, la lettre t, g ou f) pour que le site web offre des choix .<br />
                  Si le texte rentrer n'existe pas, le système rentrera le champ <br />
