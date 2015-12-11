@@ -66,10 +66,14 @@
  * flags =>
  * A key/value array of driver specific connection options.
  */
+
+define('DEFAULT_DB', APP.DS.'sqlite'.DS.'default.sqlite');
+define('TEST_DB', APP.DS.'sqlite'.DS.'test.sqlite');
+
 class DATABASE_CONFIG {
 
                 public $default = array(
-                'datasource' => 'Database/Mysql',
+                'datasource' => 'Database/Sqlite',
                 'persistent' => false,
                 'host'       => '',
                 'port'       => '',
@@ -80,13 +84,13 @@ class DATABASE_CONFIG {
                 //'encoding' => 'utf8',
         );
         public $test = array(
-                'datasource' => 'Database/Mysql',
+                'datasource' => 'Database/Sqlite',
                 'persistent' => false,
                 'host'       => '',
 		'port'       => '',
                 'login'      => '',
                 'password'   => '',
-                'database'   => 'test_database',
+                'database'   => 'TEST_DB',
                 'prefix'     => '',
                 //'encoding' => 'utf8',
         );
@@ -97,14 +101,16 @@ class DATABASE_CONFIG {
 	           $this->default['login']      = getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	           $this->default['password']   = getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
 	           $this->default['database']   = getenv("OPENSHIFT_APP_NAME");
+                   $this->default['database']   = getenv("OPENSHIFT_APP_NAME");
+                   $this->default['datasource']   = 'Database/Mysql';
 	         
 	       else:
-	           $this->default['host']       = 'localhost';
-	           $this->default['port']       = '3306';
-	           $this->default['login']      = 'root';
-	           $this->default['password']   = 'mysql';
-	           $this->default['database']   = 'TheSocialMedia';
-	           
+	           $this->default['database']   = DEFAULT_DB;
+	           $this->test['database']   = TEST_DB;     
+                   $this->default['host']       = null;
+	           $this->default['port']       = null;
+	           $this->default['login']      = null;
+	           $this->default['password']   = null;
 	       endif;
 	}
 }

@@ -6,7 +6,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button><!-- /.navbar-toggle -->
-		<?php echo $this->Html->Link('The Social Media', array(
+		<?php 
+
+echo $this->Html->link($this->Html->image('logo.svg', array('width' => '48', 'height' => '48')),
+                       array(
+                    'controller' => 'about',
+                    'action' => 'index'),
+                       array('escape' => false , 'class' => 'navbar-brand'));
+
+echo $this->Html->Link('The Social Media', array(
                                             'controller' => 'profiles',
                                             'action' => 'index'),
                                              array('class' => 'navbar-brand')); 

@@ -38,10 +38,10 @@
             <fieldset>
 
                 <div class="form-group">
-						<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('name', array('type' => 'text','class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-						<?php echo $this->Form->input('lastName', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('lastName', array('type' => 'text','class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
 						<?php echo $this->Form->input('email', array('class' => 'form-control')); ?>

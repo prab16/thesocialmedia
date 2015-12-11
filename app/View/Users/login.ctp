@@ -18,7 +18,7 @@
             <?php echo __('Please enter your username and password'); ?>
         </legend>
         <?php
-        echo $this->Form->input(('username'), array('class' => 'form-control'));
+        echo $this->Form->input(('username'), array('type' => 'text','class' => 'form-control'));
         echo $this->Form->input(('password'), array('class' => 'form-control'));
         ?>
        

@@ -42,7 +42,7 @@ class EmailConfig {
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
         'username' => 'prab16@gmail.com',
-        'password' => 'coolmansingh19',
+        'password' => '',
         'transport' => 'Smtp'
     );
 	public $default = array(
@@ -96,5 +96,7 @@ class EmailConfig {
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
+        
+       
 
 }

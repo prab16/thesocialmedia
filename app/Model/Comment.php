@@ -17,12 +17,12 @@ class Comment extends AppModel {
      */
     public $displayField = 'comment';
     
-     public Function beforeSave($options = array()) {
+     /**public Function beforeSave($options = array()) {
        $resulat = $this->Network->findByTitle('networkName');
         if (isset($resulat->data[$this->alias]['id'])) {
         
         }
-    }
+    }*/
 
     /**
      * Validation rules

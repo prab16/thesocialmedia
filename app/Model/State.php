@@ -80,5 +80,18 @@ class State extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+        
+         public function getStatesByCountry($country_id = null){
+            return $this->find('list', array(
+            'conditions' => array('country_id' => $country_id),
+            'recursive' => -1
+        ));
+        }
+        
+        /**
+        $states = $this->State->find('list', array(
+            'conditions' => array('State.country_id' => $country_id),
+            'recursive' => -1
+        ));*/
 
 }

@@ -1,3 +1,0 @@
-- finir la page about
-- trouver designer dans phpmyadmin pour les tables dans le about
-- verifier les restrictions pour les utilisateur confirmer et non

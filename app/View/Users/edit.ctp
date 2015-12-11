@@ -37,13 +37,14 @@
 						<?php echo $this->Form->input(__('id'), array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input(__('username'), array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input(__('username'), array('type' => 'text','class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input(__('password'), array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
-						<?php echo $this->Form->input(__('role'), array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input(__('role'), array(
+                                                'options' => array('admin' => 'Admin', 'utilisateur' => 'Utilisateur' ), 'class' => 'form-control'), array('class' => 'form-control')); ?>
 					</div><!-- .form-group -->
 					<div class="form-group">
 						<?php echo $this->Form->input(__('email'), array('class' => 'form-control')); ?>

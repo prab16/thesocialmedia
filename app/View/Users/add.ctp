@@ -31,7 +31,7 @@
             <fieldset>
 
                 <div class="form-group">
-						<?php echo $this->Form->input('username', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('username', array('type' => 'text','class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
 						<?php echo $this->Form->input('password', array('class' => 'form-control')); ?>
