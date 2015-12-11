@@ -15,7 +15,7 @@
         <div class="jumbotron">
 <?php //echo $this->Html->image('modifier.png', array('escape' => false, 'width' => '100', 'height' => '100')); ?>
     <?php
-    $str = "/thesocialmedia/img/logo.svg";
+    $str = "/img/logo.svg";
             echo $this->Html->tag('embed', " " ,  array('src' => $str , 'width' => '400', 'height' => '400')); 
             ?>         
            <!-- <embed type="image/svg+xml" src="../../w"  width="400" height="400">-->
